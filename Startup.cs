@@ -21,7 +21,8 @@ namespace jane
         {
             IConfigurationBuilder builder = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
-            .AddJsonFile("appsettings.json");
+            .AddJsonFile("appsettings.json")
+            .AddJsonFile("Responses.json");
 
             Config = builder.Build();
         }

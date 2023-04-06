@@ -27,8 +27,8 @@ namespace jane.Modules
             List<string> responses = serviceProvider.GetRequiredService<IConfigurationRoot>().GetRequiredSection("Responses").Get<List<string>>();
 
             Random rand = serviceProvider.GetRequiredService<Random>();
-
-            string response = responses[rand.Next()];
+            int max = responses.Count - 1;
+            string response = responses[rand.Next(0, max)];
 
             await ReplyAsync(response);
         }
