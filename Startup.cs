@@ -17,11 +17,15 @@ namespace jane
     public class Startup
     {
         private IConfigurationRoot Config;
+
+        private readonly string Env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
         public Startup()
         {
             IConfigurationBuilder builder = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json")
+            .AddJsonFile($"appsettings.{Env}.json")
             .AddJsonFile("Responses.json");
 
             Config = builder.Build();

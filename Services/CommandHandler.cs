@@ -62,6 +62,10 @@ namespace jane.Services
                     await context.Channel.SendMessageAsync("I'm so sorry, I couldn't find that command. Want to try again?");
                 }
             }
+            else
+            {
+                await CommonResponse(context);
+            }
         }
 
         private async Task MarvinResponse(SocketCommandContext context)
@@ -74,6 +78,24 @@ namespace jane.Services
             string response = responses[rand.Next(0, max)];
 
             await context.Channel.SendMessageAsync(response);
+        }
+
+        private async Task CommonResponse(SocketCommandContext context)
+        {
+            List<string> responses = serviceProvider.GetRequiredService<IConfigurationRoot>().GetRequiredSection("Responses").Get<List<string>>();
+
+            Random rand = serviceProvider.GetRequiredService<Random>();
+
+            int max = responses.Count - 1;
+
+            string response = responses[rand.Next(0, max)];
+
+            int bingo = rand.Next(1, 100);
+
+            if (bingo <= 5)
+            {
+                await context.Message.ReplyAsync(response);
+            }
         }
     }
 }
