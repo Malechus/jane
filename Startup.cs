@@ -18,14 +18,19 @@ namespace jane
     {
         private IConfigurationRoot Config;
 
-        private readonly string Env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+        private string runtimeEnvironment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
         public Startup()
         {
+            if (runtimeEnvironment is null)
+            {
+                runtimeEnvironment = "Development";
+            }
+
             IConfigurationBuilder builder = new ConfigurationBuilder()
             .SetBasePath(AppContext.BaseDirectory)
             .AddJsonFile("appsettings.json")
-            .AddJsonFile($"appsettings.{Env}.json")
+            .AddJsonFile($"appsettings.{runtimeEnvironment}.json")
             .AddJsonFile("Responses.json");
 
             Config = builder.Build();
