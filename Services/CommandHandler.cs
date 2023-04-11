@@ -77,7 +77,12 @@ namespace jane.Services
             int max = responses.Count - 1;
             string response = responses[rand.Next(0, max)];
 
-            await context.Channel.SendMessageAsync(response);
+            int bingo = rand.Next(1, 100);
+
+            if (bingo <= 15)
+            {
+                await context.Channel.SendMessageAsync(response);
+            }
         }
 
         private async Task CommonResponse(SocketCommandContext context)
