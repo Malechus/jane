@@ -92,7 +92,7 @@ namespace jane.Services
 
             int bingo = rand.Next(1, 100);
 
-            if (bingo <= 5)
+            if (bingo <= 3)
             {
                 await context.Message.ReplyAsync(response);
             }
