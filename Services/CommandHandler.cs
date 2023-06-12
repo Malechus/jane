@@ -50,7 +50,7 @@ namespace jane.Services
             int argPos = 0;
             if (message.Author.Id == config.GetRequiredSection("Settings").Get<Settings>().MarvinID)
             {
-                await MarvinResponse(context);
+                return;
             }
             else if (message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
