@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace jane.Models
 {
-	public class Settings
-	{
-		public required string Token { get; set; }
-		public required ulong MarvinID { get; set; }
-		public required ulong AnnounceChannel { get; set; }
-		
-		public required string HouseholdConnection { get; set; }
+    public class Settings
+    {
+        public required string Token { get; set; }
+        public required ulong MarvinID { get; set; }
+        public required ulong AnnounceChannel { get; set; }
+        public required ulong BotChannel { get; set; }
+        public required string HouseholdConnection { get; set; }
     }
 }

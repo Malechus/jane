@@ -55,7 +55,6 @@ namespace jane.Services
             else if (message.HasCharPrefix('!', ref argPos) || message.HasMentionPrefix(client.CurrentUser, ref argPos))
             {
                 var result = await commands.ExecuteAsync(context, argPos, serviceProvider);
-                //IResult result1 = await commands.Commands.First().ExecuteAsync();
 
                 if (!result.IsSuccess)
                 {
