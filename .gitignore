@@ -486,3 +486,4 @@ appsettings.Production.json
 
 #DB migrations
 */Migrations/*
+Migrations/*
