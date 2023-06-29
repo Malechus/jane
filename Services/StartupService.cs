@@ -34,7 +34,7 @@ namespace jane.Services
 
         public async Task StartConnectionAsync()
         {
-            //client.Ready += Announce;
+            client.Ready += Announce;
 
             string discordToken = config.GetRequiredSection("Settings").Get<Settings>().Token;
             if (string.IsNullOrWhiteSpace(discordToken))
@@ -48,14 +48,13 @@ namespace jane.Services
             await commands.AddModulesAsync(Assembly.GetEntryAssembly(), provider);
         }
 
-        /*
-		private async Task Announce()
-		{
-			ulong channelID = config.GetRequiredSection("Settings").Get<Settings>().BotChannel;
+        private async Task Announce()
+        {
+            ulong channelID = config.GetRequiredSection("Settings").Get<Settings>().BotChannel;
 
-			SocketTextChannel channel = client.GetChannel(channelID) as SocketTextChannel;
+            SocketTextChannel channel = client.GetChannel(channelID) as SocketTextChannel;
 
-			await channel.SendMessageAsync("Hiya everyone! I'm so glad to be here!");
-		}*/
+            await channel.SendMessageAsync("Hiya everyone! I'm so glad to be here!");
+        }
     }
 }
