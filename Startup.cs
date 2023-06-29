@@ -62,7 +62,8 @@ namespace jane
             {
                 LogLevel = LogSeverity.Verbose,
                 MessageCacheSize = 1000,
-                GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.MessageContent
+                GatewayIntents = GatewayIntents.AllUnprivileged | GatewayIntents.MessageContent,
+
             }))
             .AddSingleton(new CommandService(new CommandServiceConfig
             {
